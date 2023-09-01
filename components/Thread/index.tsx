@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Image } from "expo-image";
 import { Thread } from "../../types";
 import PostHeading from "./PostHeading";
@@ -6,11 +6,13 @@ import BottomIcons from "./BottomIcons";
 import PostFooter from "./PostFooter";
 import { Text } from "../Themed";
 import { blurHash } from "../../constants/general";
+import ThreadLeftSide from "./ThreadLeftSide";
 
 export default function ThreadItem(thread: Thread): JSX.Element {
 	return (
-		<View>
-			<View>
+		<View style={styles.container}>
+			<ThreadLeftSide thread={thread} />
+			<View style={{ gap: 6, flexShrink: 1 }}>
 				<PostHeading
 					name={thread.author.name}
 					verified={thread.author.verified}
@@ -32,3 +34,11 @@ export default function ThreadItem(thread: Thread): JSX.Element {
 		</View>
 	);
 }
+
+const styles = StyleSheet.create({
+	container: {
+		flexDirection: "row",
+		gap: 6,
+		paddingBottom: 30,
+	},
+});

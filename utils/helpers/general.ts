@@ -19,3 +19,11 @@ export const timeAgo = (date: string): string => {
 		return diffInDays + " days";
 	}
 };
+
+export const takeFirstNElements = (
+	inputList: any[] | undefined,
+	n: number
+): any[] => {
+	if (!inputList) return [];
+	return inputList.slice(0, n);
+};
